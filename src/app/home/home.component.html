@@ -1,0 +1,19 @@
+ <div class="container">
+  <ngx-spinner  bdColor = "rgba(250,250,250, 1)" size = "large" color = "#0aad0a" type = "ball-beat" [fullScreen] = "true">
+  <img src="assets/images/freshCart.png.svg" class="loading" alt="Fresh Cart">
+  </ngx-spinner>
+    <app-main-slider></app-main-slider>
+    <div class="container">
+        <h4 class="fw-bolder my-3">Shop Popular Categories</h4>
+      <owl-carousel-o [options]="customOptions">
+          <ng-container *ngFor="let category of categories">
+              <ng-template carouselSlide>
+                <img height="200" [src]="category.image" [alt]="category.name">
+                <h4 class="h6 fw-bolder">{{category.name}}</h4>
+              </ng-template>
+            </ng-container>
+          </owl-carousel-o>
+      </div>
+    <app-featured-products></app-featured-products>
+    </div>
+

@@ -1,0 +1,54 @@
+<nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top end-0 start-0 z-3">
+    <div class="container">
+        <img src="assets/images/freshCart.png.svg" alt="Fresh Cart">
+        <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavId">
+            <ul class="navbar-nav me-auto mt-2 mt-lg-0">
+               
+                <li class="nav-item">
+                    <a *ngIf="isLogin" class="nav-link " routerLink="home" routerLinkActive="bg-main text-white rounded-2">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a *ngIf="isLogin" class="nav-link" routerLink="products" routerLinkActive="bg-main text-white rounded-2">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a *ngIf="isLogin" class="nav-link" routerLink="categories" routerLinkActive="bg-main text-white rounded-2">Categories</a>
+                </li>
+                <li class="nav-item">
+                    <a *ngIf="isLogin" class="nav-link" routerLink="brands" routerLinkActive="bg-main text-white rounded-2">Brands</a>
+                </li>
+                <li class="nav-item">
+                    <a *ngIf="isLogin" class="nav-link" routerLink="allorders" routerLinkActive="bg-main text-white rounded-2">All Orders</a>
+                </li>
+
+            </ul>
+            <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a *ngIf="!isLogin" class="nav-link" routerLink="login">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a *ngIf="!isLogin" class="nav-link" routerLink="register">Register</a>
+                </li>
+               <li class="nav-item ">
+                 <a *ngIf="isLogin" class="nav-link position-relative" routerLink="wishlist">
+                     <i class="fa-solid fa-heart text-danger fa-lg mx-3"></i>
+                     <span class="badge bg-main text-white position-absolute top-0 end-0">{{wishItemsNumbers}}</span>
+                 </a>
+               </li>
+                <li class="nav-item ">
+                    <a *ngIf="isLogin" class="nav-link p-2 position-relative" routerLink="cart">
+                        <i class="fas fa-cart-shopping fa-lg mx-3"></i>
+                        <span class="badge bg-main text-white position-absolute top-0 end-0">{{cartNumbers}}</span>
+                    </a>
+                </li>
+                <li class="nav-item mx-3">
+                    <span (click)="logOut()" *ngIf="isLogin" class="cursor-pointer nav-link">LogOut</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

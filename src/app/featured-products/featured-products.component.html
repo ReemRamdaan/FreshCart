@@ -1,0 +1,27 @@
+<ngx-spinner  bdColor = "rgba(250,250,250, 1)" size = "large" color = "#0aad0a" type = "ball-beat" [fullScreen] = "true">
+    <img src="assets/images/freshCart.png.svg" class="loading" alt="Fresh Cart">
+    </ngx-spinner>
+<div class="row pt-3">
+    <div>
+        <input [(ngModel)]="searchTerm" type="text" placeholder="Search By Name ..." class="form-control my-4 w-75 mx-auto"><br>
+    </div>
+    <div class="col-md-2" *ngFor="let product of products|search:searchTerm" >
+        <div class="product px-2 py-4 position-relative">
+            <a [routerLink]="['/productdetails',product._id]">
+         <img class="w-100" src={{product.imageCover}} alt="">
+         <span class="text-main fw-bold font-sm">{{product.category.name}}</span>
+         <h3 class="h6 fw-bolder">{{product.title.split(' ').slice(0,2).join(' ')}}</h3>
+         <div class="d-flex align-items-center justify-content-between">
+            <span class="text-muted fw-bold font-sm">{{product.price}} EGP</span>
+            <div>
+                <i class="fas fa-star rating-color"></i>
+                <span class="text-muted fw-bold font-sm">{{product.ratingsAverage}}</span>
+            </div>
+         </div>
+    </a>
+    <i *ngIf="myWishItems.includes(product._id)==false" (click)="addToWishlist(product._id)" [class.text-danger]="myWishItems.includes(product._id)" class="fa-solid fa-heart text-main position-absolute top-0 end-0 m-1 fa-2 like"></i>
+    <i *ngIf="myWishItems.includes(product._id)" (click)="removeWishlistItem(product._id)"  [class.text-main]="myWishItems.includes(product._id)" class="fa-solid fa-heart text-danger position-absolute top-0 end-0 m-1 fa-2 like"></i>
+    <button (click)="addToCart(product._id)" class="btn bg-main text-white w-100 my-2">+ Add</button>
+        </div>
+    </div>
+</div>
