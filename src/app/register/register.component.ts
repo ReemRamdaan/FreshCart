@@ -48,7 +48,7 @@ this._AuthService.register(registerForm.value).subscribe({
 repasswordMatch(registerForm:any){
 let passwordControl =registerForm.get('password');
 let rePasswordControl =registerForm.get('rePassword');
-if(passwordControl.value===rePasswordControl){
+if(passwordControl.value===rePasswordControl.value){
   return null
 }else{
   rePasswordControl.setErrors({passwordMatch:'Password and Repassword do not match'})
